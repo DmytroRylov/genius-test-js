@@ -724,11 +724,11 @@
 // let a = 0;
 
 // for (let a = 0; a < 3; a++) {
-  
+
 //     console.log(a);
 // }
 
-// або 
+// або
 
 // for (; a < 3;) {
 //     a++;
@@ -745,7 +745,7 @@
 
 //     // let i = summ + value; // довший варіант
 //     // summ = i;
-       
+
 //       summ += value; // теж саме що довший варіант але коротша запис
 // }
 
@@ -789,7 +789,6 @@
 
 // console.log(arr);
 
-
 // перебирання масиву
 
 // старий метод перебору
@@ -807,7 +806,6 @@
 //    // console.log(key); // перевіряємо чи виводиться індекс
 //   console.log(arr[key]); // пербір з доступом до індексу (але він не є хорошим)
 // }
-
 
 // масив може містити декілько масивів
 // let matrix = [
@@ -853,7 +851,6 @@
 // delete arr[2]; // коли ми видаляємо через delete ми видалили лише значення, а ключ лишився, з масивом так робити не правельно
 // console.log(arr);
 
-
 // правельне видалення елементів з масиу
 // arr.splice(2, 2); // перше значення це індекс з якого треба почати, а друге значення це скільки елементів після цього індексу потрібно удалити
 
@@ -866,7 +863,6 @@
 
 // console.log(arr.concat(a, "test")); // створює новий масив і додає до нього ті данні які в ньоми ми додаємо
 
-
 // пошук по масиву
 
 // console.log(arr.indexOf("c", 1)); // задаємо що шукаємо, а другим аргументом з якого індексу.(ящо не знайде то виведе "-1")
@@ -875,7 +871,7 @@
 
 // console.log(arr.includes("c")); // повертає тру або фолс
 
-// пошук по масиву 
+// пошук по масиву
 
 // const fruts = [
 //   { id: 0, name: "Apple" },
@@ -897,7 +893,6 @@
 
 // let result = fruts.map((item) => item.name.length);
 // console.log(result);
-
 
 // split (зі строки робим масив)
 
@@ -921,7 +916,6 @@
 //   [initial]
 // );
 
-
 // arr.reduce (обчислити сумму значень всього масиву)
 // let arr = [1, 2, 3, 4, 5];
 
@@ -935,13 +929,13 @@ let arr = [23, 45, 30];
 let summ = arr.reduce((sum, item) => sum + item) / arr.length;
 console.log(summ);
 
-// Lesson 4 
+// Lesson 4
 
 // ФУНКЦІЇ
 
 // функція декларейшин
 
-// function showMessage(name, city) { 
+// function showMessage(name, city) {
 //     console.log("Hello, my name is " + name + " I'm from " + city);
 // }
 
@@ -954,7 +948,7 @@ console.log(summ);
 
 // const userName = " Ann" // в фуекції можуть  бути глобальні змінні
 
-// const sayHi = function () { 
+// const sayHi = function () {
 //     let message = "Hello, my name Ivan" // в функції можуть бути локальні змінні
 //     console.log(message + userName);
 // }
@@ -963,7 +957,7 @@ console.log(summ);
 
 // математичні функції
 
-// function sum(a, b) { 
+// function sum(a, b) {
 //     // let c = a + b; // якщо багато строчок та обчислень можно зробити наступним чином
 //     // return c;
 //     return a + b;
@@ -1022,19 +1016,19 @@ console.log(summ);
 
 // callback функції зворотнього виклику (функція яка буде виконана пізніше)
 
-// function ask(question, yes, no) { 
+// function ask(question, yes, no) {
 //     if (confirm(question)) {
 //         yes();
-//     } else { 
+//     } else {
 //         no();
 //     }
 // }
 
-// function showOk() { 
+// function showOk() {
 //     console.log("You say Ok");
 // }
 
-// function showCancel() { 
+// function showCancel() {
 //     console.log("You say No");
 // }
 
@@ -1042,11 +1036,11 @@ console.log(summ);
 
 // ще такі callbac називають HOF хай ондерфаинд функтион (тобто функцыъ вищого порядку)
 
-// const hello = function (name) { 
+// const hello = function (name) {
 //     console.log(`Hello, ${name}`);
 // }
 
-// const searchName = function (callback) { 
+// const searchName = function (callback) {
 //     const name = "Ivan";
 //     callback(name);
 //     }
@@ -1055,3 +1049,4 @@ console.log(summ);
 
 // правило - одна функція - одна дія!
 
+// test
