@@ -924,10 +924,10 @@
 // console.log(red);
 
 // обчислюємо середнє значення масиву
-let arr = [23, 45, 30];
+// let arr = [23, 45, 30];
 
-let summ = arr.reduce((sum, item) => sum + item) / arr.length;
-console.log(summ);
+// let summ = arr.reduce((sum, item) => sum + item) / arr.length;
+// console.log(summ);
 
 // Lesson 4
 
@@ -1034,7 +1034,7 @@ console.log(summ);
 
 // ask("Yes or no?", showOk, showCancel);
 
-// ще такі callbac називають HOF хай ондерфаинд функтион (тобто функцыъ вищого порядку)
+// ще такі callbac називають HOF хай ондерфаинд функтион (тобто функція вищого порядку)
 
 // const hello = function (name) {
 //     console.log(`Hello, ${name}`);
@@ -1049,4 +1049,350 @@ console.log(summ);
 
 // правило - одна функція - одна дія!
 
-// test
+// приклади 
+
+// function checkAge(age) { 
+//     if (age > 18) {
+//         return console.log("Hello");
+//     } else {
+//         console.log("Good bay");
+//     }
+// }
+
+// але можна і спростити цю функцію
+
+// function checkAge(age) { 
+//     if (age > 18) {
+//         return console.log("Hello"); // якщо тут виконалась умова інтерпритатор далі не йде
+//     } 
+//        return console.log("Good bay"); // якщо ні то інтерпритатор іде сюди і тут працює реторн
+//     }
+
+// checkAge(22);
+
+// реторн не обовязково має щось повертати
+
+// function showMovie(age) { 
+//     if (age < 21) { 
+//         return;
+//     }
+//     return console.log("Go to mowie");
+// }
+
+// showMovie(12);
+
+// стрілкова функція 
+// в стрілкових функція псевдомасивів аргументів не  має
+
+// const test = (arg) => { 
+//     console.log(arg);
+// };
+
+// test("Hello");
+
+// const showMovie = (age) => { 
+//     if (age > 21) { 
+//         return console.log("Hello");
+//     }
+//     return console.log("Bye!");
+// };
+
+// showMovie(12);
+
+// Контексти і виклики
+
+// const a = () => { 
+//     console.log("a");
+// };
+
+// const b = () => { 
+//     console.log("b");
+// };
+
+// const c = () => { 
+//     console.log("c");
+//     a();
+//     b();
+// };
+
+// c();
+
+// Практика підєднуємо наші функції до чого небуть
+
+// console.log(document);
+
+// const addNumber = (number) => { // придумуємо функцію додавання
+//     let summ = Number(number) + 10;
+//     return console.log(summ);
+// };
+
+// const numberRef = document.querySelector(`input[name="number"]`); // посилання на намбер
+
+// const buttonRef = document.querySelector("button"); // посилання на кнопку
+
+// робимо щоб кнопка слухала
+// addEventListener обробляємо якусь подію по натисканню кнопки
+
+// buttonRef.addEventListener(`click`, ()=> addNumber(numberRef.value)); // додається 10 по натисканю кнопки
+
+/////////////////////////////////
+// Lesson 5
+/////////////////////////////////
+
+//замикання
+
+// приклад
+// function creatNewSum(n) { 
+//     return function () {
+//         console.log(10 * n);
+//     };
+// }
+
+// const calc = creatNewSum(5);
+// calc();  // в даному прикладі calc() замикає функцію creatNewSum(n)
+
+//  ще приклад
+
+// function creatNewNumber(n) { 
+//     return function (num) {
+//         return n + num;
+//     };
+// }
+
+// const addFive = creatNewNumber(5);
+// console.log(addFive(10));
+
+//  ще приклад з url
+
+// function createUrl(domain) {
+//   return function (url) {
+//     return `https://${url}.${domain}`;
+//   };
+// }
+
+// const comUrl = createUrl("com");
+// const comUa = createUrl("ua");
+
+// console.log(comUrl("google"));
+// console.log(comUrl("fb"));
+
+// console.log(comUa("google"));
+// console.log(comUa("fb"));
+
+//_________________________//
+//_________________________//
+//this
+
+// function hello() {
+//   console.log("hello", this);
+// }
+
+// hello();
+
+// const user = {
+//   name: "Ivan",
+//   city: "Odesa",
+//   sayHello: hello,
+// };
+
+// user.sayHello();
+//-----
+
+// function abc() {
+//   console.log("В функції");
+//   console.log(this);
+// }
+
+// abc();
+
+// document.querySelector("p").onclick = abc;
+
+// function changeColor() {
+//     // console.log(this);
+//   this.style.background = "green";
+// }
+
+// document.querySelector("div").onclick = changeColor;
+
+// let user = document.querySelectorAll("div");
+
+// user.forEach(function (element) {
+//   element.onclick = changeColor;
+// });
+
+//-----------
+//  В стрілочних функціях this не має
+// const showList = () => {
+//   console.log(this);
+// };
+
+// showList();
+
+// const list = {
+//   names: ["Ann", "Olga", "Nata"],
+//   showList: showList,
+// };
+
+// list.showList();
+
+//========= bind 
+// вбудовані методи
+
+
+// function hello() {
+//   console.log(this);
+// }
+
+// const user = {
+//   name: "Ivan",
+//   age: 30,
+//   hello: hello,
+//   sayHelloWindow: hello.bind(window),
+//   info: function (city) {
+//     console.log(`Name is ${this.name}`);
+//     console.log(`Age is ${this.age}`);
+//     console.log(`City is ${city}`);
+//   },
+// };
+
+
+// const Ann = {
+//   name: "Anna",
+//   age: 23,
+// };
+
+// // user.info.bind(Ann)();
+
+// const Nata = {
+//   name: "Natalia",
+//   age: 50,
+// };
+// user.info.bind(Ann)("Kyiv");
+// // user.info.bind(Nata, "Odessa")();
+
+// const nataInfo = user.info.bind(Nata, "Odesa");
+// nataInfo();
+
+//========= call
+
+const userInfo = {
+  name: "name",
+  age: 98,
+  logInfo: function (job) {
+    console.group(`${name} info:`);
+    console.log(`Name is : ${this.name}`);
+    console.log(`Age is : ${this.age}`);
+    console.log(`Job is : ${job}`);
+    console.groupEnd();
+  },
+};
+
+userInfo.logInfo();
+
+const Vano = {
+  name: "Ivan",
+  age: 45,
+};
+
+userInfo.logInfo.call(Vano, "developer");
+
+//apply
+
+// const showUserInfo = {
+//   name: name,
+//   age: 87,
+//   logInfo: function (job, city) {
+//     console.group(`${name} info:`);
+//     console.log(`Name is : ${this.name}`);
+//     console.log(`Age is : ${this.age}`);
+//     console.log(`Job is : ${job}`);
+//     console.log(`City is : ${city}`);
+//     console.groupEnd();
+//   },
+// };
+
+// const Vano = {
+//   name: "Ivan",
+//   age: 45,
+// };
+
+// // showUserInfo.logInfo.call(Vano, "developer", "Lviv"); // в call можно передавати 3-ри аргументи
+
+// showUserInfo.logInfo.apply(Vano, ["developer", "Lviv"]); //в apply можно передавати 2-ва аргументи і другий як масив 
+
+///////////////////////////////////
+///////////////////////////////////
+
+// const message = function (name, stars) {
+//   console.log(`${name}, Welcome to ${this.hotel}, stars ${stars}`);
+// };
+
+// const Bukovel = { hotel: "Bukovel" };
+// const Turist = { hotel: "Turist" };
+
+// message.call(Bukovel, "Ivan", "5");
+// message.call(Turist, "Ivan", "3");
+
+// message.apply(Bukovel, ["Ivan", "5"]);
+// message.apply(Turist, ["Ivan", "3"]);
+
+// message.bind(Bukovel, "Ivan", "5")();
+// message.bind(Turist, "Ivan", "3")();
+
+/////////////////////////
+
+// const cart = {
+//   showItems() {
+//     console.log("В корзині: ", this.items);
+//   },
+// };
+
+// const woman = {
+//   items: ["Сукня, туфлі"],
+// };
+
+// const man = {
+//   items: ["Костюм, рубашка"],
+// };
+
+// const child = {
+//   items: ["майка, шорти"],
+// };
+
+// cart.showItems.bind(man)(); /// перевіряємо
+
+// document
+//   .querySelector("#wom")
+//   .addEventListener("click", cart.showItems.bind(woman));
+
+// document
+//   .querySelector("#man")
+//   .addEventListener("click", cart.showItems.bind(man));
+
+// document
+//   .querySelector("#kid")
+//   .addEventListener("click", cart.showItems.bind(child));
+// ////
+
+// const infoCar = {
+//   name: "BMW",
+//   model: "M7",
+//   color: "white",
+//   showInfo: function () {
+//     console.log(
+//       "Car: " + this.name + " model: " + this.model + " color: " + this.color
+//     );
+//   },
+// };
+// // console.log(infoCar);
+// // infoCar.showInfo();
+
+// car2 = {
+//   name: "Opel",
+//   model: "XXX",
+//   color: "red",
+// };
+
+// infoCar.showInfo.bind(car2)();
+// infoCar.showInfo.call(car2);
+// infoCar.showInfo.apply(car2);
